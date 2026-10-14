@@ -1,1 +1,10 @@
 User stories to implement:
+
+- As a seller, I want to create a listing with a title, description, price, category, condition, and photos, so that buyers have the information they need to make a decision.
+- As a seller, I want to be notified when someone messages me or shows interest in my item, so that I can respond quickly.
+- As a seller, I want to edit, delete, or mark my listings as sold, so that buyers aren’t asking about items that are no longer available.
+- As a buyer, I want a detail page showing photos, description, price, condition, and seller info, so that I can evaluate an item before reaching out.
+- As a buyer, I want to search by keyword, so that I can quickly find a specific item.
+- As a buyer, I want to filter by category, price range, and condition, so that I only see items that fit my needs and budget.
+- As a buyer, I want to message a seller directly from a listing, so that I can ask questions or show interest without sharing my personal contact info.
+- As a buyer, I want to be notified when a seller replies, so that I don’t miss out on the item.
