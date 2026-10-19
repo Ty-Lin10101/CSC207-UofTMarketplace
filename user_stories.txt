@@ -1,10 +1,43 @@
 User stories to implement:
 
-- As a seller, I want to create a listing with a title, description, price, category, condition, and photos, so that buyers have the information they need to make a decision.
-- As a seller, I want to be notified when someone messages me or shows interest in my item, so that I can respond quickly.
-- As a seller, I want to edit, delete, or mark my listings as sold, so that buyers aren’t asking about items that are no longer available.
-- As a buyer, I want a detail page showing photos, description, price, condition, and seller info, so that I can evaluate an item before reaching out.
-- As a buyer, I want to search by keyword, so that I can quickly find a specific item.
-- As a buyer, I want to filter by category, price range, and condition, so that I only see items that fit my needs and budget.
-- As a buyer, I want to message a seller directly from a listing, so that I can ask questions or show interest without sharing my personal contact info.
-- As a buyer, I want to be notified when a seller replies, so that I don’t miss out on the item.
+- As a user,
+    - I want to sign up and log in using my email or social accounts with a secure password, so that I can securely manage my profile, listings, and saved items.
+    - I want to create and edit a public profile (display name, profile picture, bio), so that other marketplace members know who they are interacting with.
+    - I want to have my exact street address hidden from public listings, showing only my general city or neighborhood, so that my personal physical safety and privacy are protected.
+    - I want new accounts to go through verification (such as email or phone number confirmation), so that the marketplace is protected from automated bots and malicious spam accounts.
+    - I want to report suspicious listings, messages, or user profiles, so that moderators can investigate and remove malicious actors from the platform.
+
+- As a seller,
+    - I want to create a new listing by adding a title, description, price, category, condition, and up to 10 photos, so that potential buyers have all the information they need to evaluate the item.
+    - I want to edit my existing listing details (price, description, photos), so that I can correct mistakes or update information without recreating the listing.
+    - I want to change the status of my listing to Active, Pending, or Sold, so that buyers don’t waste time asking about items that are no longer available or currently on hold.
+    - I want to permanently delete my listing, so that it is completely removed from the marketplace if I decide not to sell.
+    - I want to message potential buyers through an in-app chat interface, so that we can negotiate terms and coordinate a meetup without exchanging personal phone numbers or emails.
+    - I want to receive push and in-app notifications when someone messages me or marks interest in my item, so that I can respond quickly and secure a sale.
+    - I want to rate and review a buyer after a transaction is completed, so that I can inform the rest of the community about my experience with them.
+
+- As a buyer,
+    - I want to search for items using keywords in the search bar, so that I can quickly find a specific item I am looking for.
+    - I want to filter search results by category, price range, and condition, and sort them by newest or price, so that I only see items that fit my exact needs and budget.
+    - I want to view a dedicated item page showing high-resolution photos, description, price, condition, and seller profile info, so that I can thoroughly evaluate the product before reaching out.
+    - I want to bookmark/save listings to a favorites folder, so that I can easily refer back to them later without losing track.
+    - I want to message a seller directly from an item listing page, so that I can ask questions, make offers, or show interest privately.
+    - I want to receive notifications when a seller replies to my message, so that I don’t miss out on purchasing the item.
+    - I want to rate and review a seller after a transaction is completed, so that I can help future buyers gauge the seller's reliability.
+
+
+Frontend:
+- PROTOTYPE - Figma, Html/CSS
+- FINAL - Java Swing
+
+Backend:
+- Java: SOLID/Clean Architecture
+
+Database:
+- PostgreSQL
+
+APIs to use:
+- Supabase - Register/login, Item listings, Item image storage
+- Google Geolocation - Location tracking (NOTE: 10,000 free requests per month)
+- HTML5 geolocation + Nominatim?
+- Google Maps - Embed maps
