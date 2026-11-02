@@ -1,1 +1,29 @@
+use cases user
+name: register an account
+name: log in
+name: log out
+name: reset forgotten password
+name: change password
+name: view profile
+name: edit profile
+name: report listing
+name: report profiles
+name: delete account
+name: rate a user
+name: view conversation
 
+use cases buyer
+name: filter listings
+name: browse listings
+name: search listings by keyword
+name: view listing details
+name: bookmark a listing
+name: view bookmarked listings
+name: start a conversation
+
+use cases seller
+name: create listing
+name: edit listing
+name: delete listing
+name: save listing draft
+name: publish listing draft
