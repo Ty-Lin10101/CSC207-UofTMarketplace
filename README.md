@@ -9,7 +9,7 @@ User stories to implement:
     - I want to create and edit a public profile (display name, profile picture, bio, UofT campus), so that other marketplace members know who they are interacting with.
     - I want new accounts to go through verification (such as email or phone number confirmation), so that the marketplace is protected from automated bots and malicious spam accounts.
     - I want to report suspicious listings or user profiles, so that moderators can investigate and remove malicious actors from the platform.
-    - I want to add my social media contact information to my profile so that buyers and sellers can connect and communicate outside the marketplace.
+    - I want to send and receive messages within the marketplace so that I can ask questions, negotiate prices, and arrange meetups without sharing my personal contact information.
 
 - As a seller,
     - I want to create a new listing by adding a title, description, price, category, condition, and up to 10 photos, so that potential buyers have all the information they need to evaluate the item.
