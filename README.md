@@ -41,9 +41,10 @@ Database:
 - PostgreSQL
 
 APIs to use:
-- Supabase - Register/login, Item listings, Item image storage
+- Supabase - Register/login, Item listings, Item image storage (CONSIDERING THIS VS FIREBASE -- LOOKING INTO IT)
 - Google Geolocation - Location tracking (NOTE: 10,000 free requests per month)
 - Google Maps - Embed maps
+- Imgur - Image storing
 
 # Use Cases
 
