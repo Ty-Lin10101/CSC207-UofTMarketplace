@@ -6,8 +6,7 @@ User stories to implement:
 
 - As a user,
     - I want to sign up and log in using my email or social accounts with a secure password, so that I can securely manage my profile, listings, and saved items.
-    - I want to create and edit a public profile (display name, profile picture, bio), so that other marketplace members know who they are interacting with.
-    - I want to have my exact street address hidden from public listings, showing only my general city or neighborhood, so that my personal physical safety and privacy are protected.
+    - I want to create and edit a public profile (display name, profile picture, bio, UofT campus), so that other marketplace members know who they are interacting with.
     - I want new accounts to go through verification (such as email or phone number confirmation), so that the marketplace is protected from automated bots and malicious spam accounts.
     - I want to report suspicious listings or user profiles, so that moderators can investigate and remove malicious actors from the platform.
     - I want to add my social media contact information to my profile so that buyers and sellers can connect and communicate outside the marketplace.
@@ -44,7 +43,6 @@ Database:
 APIs to use:
 - Supabase - Register/login, Item listings, Item image storage
 - Google Geolocation - Location tracking (NOTE: 10,000 free requests per month)
-- HTML5 geolocation + Nominatim?
 - Google Maps - Embed maps
 
 # Use Cases
