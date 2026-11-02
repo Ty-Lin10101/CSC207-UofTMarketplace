@@ -48,3 +48,8 @@ APIs to use:
 # Use Cases
 
 # Entities
+- User: firstName, lastName, username (unique), profileImage, listings (array of Listing), campus, userRating, reviews (array of Review), email (uoft emails), password, accountCreatedDate
+     - We will treat a User as both a buyer and a seller, so all accounts are able to do both.
+- Listing: name, id (unique), price, condition, categories, description, seller, campus, mainImage, imageGallery, timePosted
+- Review: reviewer, reviewee, id (unique), listingId, starRating, description, isItemBought, timeReviewed
+     - Reviewer makes a review of the reviewee.
