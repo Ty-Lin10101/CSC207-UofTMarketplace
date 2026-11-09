@@ -10,7 +10,7 @@ CSC207 Fall 2026 Group Project
 - Jeffery Chan (GitHub: jycxn)
 - Millie Bay (GitHub: millieb-code)
 - Tyler Lin (GitHub: Ty-Lin10101)
-- Tony Lin
+- Tony Lin (GitHub: ToniSucks)
 
 ---
 
