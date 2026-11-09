@@ -274,14 +274,21 @@ Not in MVP: `Conversation` / `Message` (for chat), `Report`.
 
 ## API Usage
 
-**API Name:** Supabase (still comparing with Firebase)
+### **API Name:** Supabase
+
 **Documentation:** [https://supabase.com/docs](https://supabase.com/docs)
-**How it is used in the program:** Sign up / log in, storing users and listings (PostgreSQL), and storing listing images.
+
+**How it is used in the program:** Sign up / log in, storing users and listings (PostgreSQL), and storing listing data.
+
 **Status:** Not called yet
 
-**API Name:** Imgur
+
+### **API Name:** Imgur
+
 **Documentation:** [https://apidocs.imgur.com/](https://apidocs.imgur.com/)
-**How it is used in the program:** Image hosting for listing photos (alternative to Supabase storage).
+
+**How it is used in the program:** Image hosting for listing photos (alternative to Supabase storage for images).
+
 **Status:** Not called yet
 
 Note: Location is shown only at neighbourhood/campus level, never as a street address.
