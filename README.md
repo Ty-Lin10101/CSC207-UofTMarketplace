@@ -284,22 +284,7 @@ Not in MVP: `Conversation` / `Message` (for chat), `Report`.
 **How it is used in the program:** Image hosting for listing photos (alternative to Supabase storage).
 **Status:** Not called yet
 
-**API Name:** Google Maps Embed
-**Documentation:** [https://developers.google.com/maps/documentation/embed/get-started](https://developers.google.com/maps/documentation/embed/get-started)
-**How it is used in the program:** Show an approximate meetup area on listing pages.
-**Status:** Not called yet
-
-**API Name:** Google Geolocation
-**Documentation:** [https://developers.google.com/maps/documentation/geolocation/overview](https://developers.google.com/maps/documentation/geolocation/overview)
-**How it is used in the program:** Detect the user's general area (10,000 free requests/month).
-**Status:** Not called yet
-
-**API Name:** Nominatim (OpenStreetMap)
-**Documentation:** [https://nominatim.org/release-docs/latest/api/Overview/](https://nominatim.org/release-docs/latest/api/Overview/)
-**How it is used in the program:** Free alternative for turning a location into a neighbourhood name.
-**Status:** Not called yet
-
-Location is shown only at neighbourhood/campus level, never as a street address.
+Note: Location is shown only at neighbourhood/campus level, never as a street address.
 
 ---
 
