@@ -243,12 +243,12 @@ Each team member owns one user story and leads its use cases: they write most of
 
 | Team Member | User Story | MVP Use Cases |
 |-------------|------------|---------------|
-| TODO | 1 — Sign up and log in | UC1 Register an account, UC2 Log in |
-| TODO | 2 — Public profile | UC3 View profile, UC4 Edit profile |
-| TODO | 3 — Create a listing | UC5 Create listing |
-| TODO | 4 — Search and filter | UC6 Search listings, UC7 Filter and sort listings |
-| TODO | 5 — Item page | UC8 View listing details |
-| TODO | 6 — Bookmarks | UC9 Bookmark a listing, UC10 View bookmarked listings |
+| Jeffery | 1 — Sign up and log in | UC1 Register an account, UC2 Log in |
+| Tony | 2 — Public profile | UC3 View profile, UC4 Edit profile |
+| Houssam| 3 — Create a listing | UC5 Create listing |
+| Tyler | 4 — Search and filter | UC6 Search listings, UC7 Filter and sort listings |
+| Owen | 5 — Item page | UC8 View listing details |
+| Millie | 6 — Bookmarks | UC9 Bookmark a listing, UC10 View bookmarked listings |
 
 ---
 
