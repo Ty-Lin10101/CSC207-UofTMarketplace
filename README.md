@@ -72,104 +72,163 @@ As a buyer, I want to bookmark/save listings to a favorites folder, so that I ca
 
 ### User Story 1 — Sign up and log in
 
-#### Use Case 1: Register an account
-- **Actor:** User (not logged in)
-- **Main flow:**
-  1. User enters name, UofT email, username, password, and campus.
-  2. System checks the email is a UofT email and the username is not taken.
-  3. System creates the account and shows the home page.
-- **Alternative flows:**
-  - Email is not a UofT email, or username is taken → show an error and let the user try again.
-  - Password is too weak → show password requirements.
+#### Use Case 1: Register an Account
+- **Name:** Register an Account
+- **Primary Actor:** User
+- **Precondition:** The user does not have an account and is not logged in.
+- **Trigger:** The user chooses to sign up.
+- **Main Success Scenario:**
+  1. User enters their name, UofT email, username, password, and campus.
+  2. System checks that the email is a UofT email and the username is not taken.
+  3. System creates the account.
+  4. System logs the user in and presents the home page.
+- **Extensions:**
+  - **1a.** User cancels → no account is created → use case ends.
+  - **2a.** Email is not a UofT email → system shows an error → user re-enters email (back to step 1).
+  - **2b.** Username or email is already taken → system shows an error → back to step 1.
+  - **2c.** Password is too weak → system shows the password requirements → back to step 1.
+- **Success Outcome:** A new account exists and the user is logged in.
 
-#### Use Case 2: Log in
-- **Actor:** User (not logged in)
-- **Main flow:**
-  1. User enters email and password.
+#### Use Case 2: Log In
+- **Name:** Log In
+- **Primary Actor:** User
+- **Precondition:** The user has an account and is not logged in.
+- **Trigger:** The user chooses to log in.
+- **Main Success Scenario:**
+  1. User enters their email and password.
   2. System checks the credentials.
-  3. System logs the user in and shows the home page.
-- **Alternative flows:**
-  - Wrong email or password → show "Incorrect email or password".
+  3. System logs the user in.
+  4. System presents the home page.
+- **Extensions:**
+  - **1a.** User cancels → user stays logged out → use case ends.
+  - **2a.** Email or password is wrong → system shows "Incorrect email or password" → back to step 1.
+- **Success Outcome:** The user is logged in.
 
 ### User Story 2 — Public profile
 
-#### Use Case 3: View profile
-- **Actor:** User
-- **Main flow:**
-  1. User clicks a seller's name or opens "My profile".
-  2. System shows display name, profile picture, bio, campus, rating, and active listings.
-- **Alternative flows:**
-  - Account no longer exists → show "This user is no longer available".
+#### Use Case 3: View Profile
+- **Name:** View Profile
+- **Primary Actor:** User
+- **Precondition:** The profile to view belongs to an existing account.
+- **Trigger:** The user clicks a seller's name or opens "My profile".
+- **Main Success Scenario:**
+  1. User chooses the profile to view.
+  2. System retrieves the profile.
+  3. System presents the display name, profile picture, bio, campus, rating, and active listings.
+- **Extensions:**
+  - **2a.** The account no longer exists → system shows "This user is no longer available" → use case ends.
+- **Success Outcome:** The user sees the chosen profile.
 
-#### Use Case 4: Edit profile
-- **Actor:** Logged-in user
-- **Main flow:**
-  1. User opens their profile and clicks "Edit".
-  2. User changes display name, profile picture, bio, or campus.
-  3. System saves the changes and shows the updated profile.
-- **Alternative flows:**
-  - Invalid input (e.g. empty name) → show an error.
+#### Use Case 4: Edit Profile
+- **Name:** Edit Profile
+- **Primary Actor:** User
+- **Precondition:** The user is logged in.
+- **Trigger:** The user chooses to edit their profile.
+- **Main Success Scenario:**
+  1. User opens their profile and chooses "Edit".
+  2. System provides the profile's current information.
+  3. User provides updated display name, profile picture, bio, or campus.
+  4. System updates the profile.
+  5. System presents the updated profile.
+- **Extensions:**
+  - **3a.** User cancels → profile remains unchanged → use case ends.
+  - **4a.** Input is invalid (e.g. empty display name) → system shows an error → back to step 3.
+- **Success Outcome:** The profile contains the updated information.
 
 ### User Story 3 — Create a listing
 
-#### Use Case 5: Create listing
-- **Actor:** Logged-in user (seller)
-- **Main flow:**
-  1. User opens "New listing" and enters title, description, price, category, condition, campus, and photos (up to 10).
-  2. System validates the fields and uploads the photos.
-  3. System saves the listing as Active and shows its listing page.
-- **Alternative flows:**
-  - Required field missing or price invalid → show which field is wrong.
-  - More than 10 photos → show "Maximum 10 photos".
-  - Photo upload fails → keep the form filled in and ask the user to retry.
+#### Use Case 5: Create Listing
+- **Name:** Create Listing
+- **Primary Actor:** User (seller)
+- **Precondition:** The user is logged in.
+- **Trigger:** The user chooses to create a new listing.
+- **Main Success Scenario:**
+  1. System provides an empty listing form.
+  2. User provides a title, description, price, category, condition, campus, and up to 10 photos.
+  3. System validates the information and uploads the photos.
+  4. System saves the listing with status Active.
+  5. System presents the new listing page.
+- **Extensions:**
+  - **2a.** User cancels → no listing is created → use case ends.
+  - **3a.** A required field is missing or the price is invalid → system shows which field is wrong → back to step 2.
+  - **3b.** More than 10 photos → system shows "Maximum 10 photos" → back to step 2.
+  - **3c.** Photo upload fails → system keeps the form filled in and asks the user to retry → back to step 2.
+- **Success Outcome:** A new Active listing exists and is visible to other users.
 
 ### User Story 4 — Search and filter
 
-#### Use Case 6: Search listings by keyword
-- **Actor:** User (buyer)
-- **Main flow:**
-  1. User types a keyword in the search bar.
-  2. System shows active listings whose title or description match.
-- **Alternative flows:**
-  - No matches → show "No listings found".
+#### Use Case 6: Search Listings by Keyword
+- **Name:** Search Listings by Keyword
+- **Primary Actor:** User (buyer)
+- **Precondition:** None.
+- **Trigger:** The user types a keyword in the search bar and submits.
+- **Main Success Scenario:**
+  1. User provides a keyword.
+  2. System finds Active listings whose title or description match the keyword.
+  3. System presents the matching listings.
+- **Extensions:**
+  - **1a.** Keyword is empty → system presents all Active listings.
+  - **2a.** No listings match → system shows "No listings found" → use case ends.
+- **Success Outcome:** The user sees the listings that match the keyword.
 
-#### Use Case 7: Filter and sort listings
-- **Actor:** User (buyer)
-- **Main flow:**
-  1. User picks category, price range, and/or condition, and a sort order (newest or price).
-  2. System updates the results to show only matching listings in that order.
-- **Alternative flows:**
-  - Min price is higher than max price → show an error.
-  - No matches → show "No listings found".
+#### Use Case 7: Filter and Sort Listings
+- **Name:** Filter and Sort Listings
+- **Primary Actor:** User (buyer)
+- **Precondition:** The user is viewing a list of listings.
+- **Trigger:** The user changes a filter or the sort order.
+- **Main Success Scenario:**
+  1. User chooses a category, price range, and/or condition, and a sort order (newest or price).
+  2. System finds the listings that match the filters.
+  3. System sorts them in the chosen order.
+  4. System presents the updated results.
+- **Extensions:**
+  - **1a.** Minimum price is higher than maximum price → system shows an error → back to step 1.
+  - **2a.** No listings match → system shows "No listings found" → use case ends.
+- **Success Outcome:** The user sees only listings that match the filters, in the chosen order.
 
 ### User Story 5 — Item page
 
-#### Use Case 8: View listing details
-- **Actor:** User (buyer)
-- **Main flow:**
-  1. User clicks a listing.
-  2. System shows photos, title, description, price, condition, campus, status, and the seller's name and rating.
-- **Alternative flows:**
-  - Listing was deleted → show "This listing is no longer available".
+#### Use Case 8: View Listing Details
+- **Name:** View Listing Details
+- **Primary Actor:** User (buyer)
+- **Precondition:** The listing exists.
+- **Trigger:** The user clicks a listing.
+- **Main Success Scenario:**
+  1. User chooses a listing.
+  2. System retrieves the listing and its seller.
+  3. System presents the photos, title, description, price, condition, campus, status, and the seller's name and rating.
+- **Extensions:**
+  - **2a.** The listing was deleted → system shows "This listing is no longer available" → use case ends.
+- **Success Outcome:** The user sees the full details of the listing.
 
 ### User Story 6 — Bookmarks
 
-#### Use Case 9: Bookmark a listing
-- **Actor:** Logged-in user (buyer)
-- **Main flow:**
-  1. On a listing page, user clicks "Bookmark".
+#### Use Case 9: Bookmark a Listing
+- **Name:** Bookmark a Listing
+- **Primary Actor:** User (buyer)
+- **Precondition:** The user is logged in and viewing a listing.
+- **Trigger:** The user clicks "Bookmark" on a listing page.
+- **Main Success Scenario:**
+  1. User chooses to bookmark the listing.
   2. System adds the listing to the user's bookmarks.
-- **Alternative flows:**
-  - Already bookmarked → button removes the bookmark instead.
+  3. System shows the listing as bookmarked.
+- **Extensions:**
+  - **2a.** The listing is already bookmarked → system removes it from bookmarks → system shows it as not bookmarked → use case ends.
+- **Success Outcome:** The listing is in the user's bookmarks.
 
-#### Use Case 10: View bookmarked listings
-- **Actor:** Logged-in user (buyer)
-- **Main flow:**
-  1. User opens "My bookmarks".
-  2. System shows all saved listings.
-- **Alternative flows:**
-  - No bookmarks → show "You haven't saved any listings yet".
-  - A saved listing was deleted → remove it from the list.
+#### Use Case 10: View Bookmarked Listings
+- **Name:** View Bookmarked Listings
+- **Primary Actor:** User (buyer)
+- **Precondition:** The user is logged in.
+- **Trigger:** The user opens "My bookmarks".
+- **Main Success Scenario:**
+  1. User chooses to view their bookmarks.
+  2. System retrieves the user's bookmarked listings.
+  3. System presents the bookmarked listings.
+- **Extensions:**
+  - **2a.** The user has no bookmarks → system shows "You haven't saved any listings yet" → use case ends.
+  - **2b.** A bookmarked listing was deleted → system removes it from the bookmarks and presents the rest.
+- **Success Outcome:** The user sees all their saved listings.
 
 ### Future Use Cases (if time allows)
 - **User:** log out, reset forgotten password, change password, delete account, verify account, report listing, report profile, rate a user, view conversation
