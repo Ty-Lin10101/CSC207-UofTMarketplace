@@ -1,16 +1,13 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
-    private String firstName;
-    private String lastName;
+    private UserProfile profile;
     private String username;
     private String email;
     private String password;
-    private String profileImage;
-    private String bio;
-    private String campus;
     private List<Listing> listings;
     private List<Listing> bookmarks;
     private List<Review> reviews;
@@ -18,6 +15,7 @@ public class User {
     private LocalDateTime accountCreatedDate;
 
     public User() {
+        this.profile = new UserProfile();
         this.listings = new ArrayList<>();
         this.bookmarks = new ArrayList<>();
         this.reviews = new ArrayList<>();
@@ -28,30 +26,34 @@ public class User {
     public User(String firstName, String lastName, String username, String email, String password,
                 String profileImage, String bio, String campus) {
         this();
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.profile = new UserProfile(firstName, lastName, profileImage, bio, campus);
         this.username = username;
         this.email = email;
-        this.password = password;
-        this.profileImage = profileImage;
-        this.bio = bio;
-        this.campus = campus;
+        setPassword(password);
+    }
+
+    public UserProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(UserProfile profile) {
+        this.profile = profile == null ? new UserProfile() : new UserProfile(profile);
     }
 
     public String getFirstName() {
-        return firstName;
+        return profile.getFirstName();
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        profile.setFirstName(firstName);
     }
 
     public String getLastName() {
-        return lastName;
+        return profile.getLastName();
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        profile.setLastName(lastName);
     }
 
     public String getUsername() {
@@ -75,31 +77,31 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : PasswordHasher.hash(password);
     }
 
     public String getProfileImage() {
-        return profileImage;
+        return profile.getProfileImage();
     }
 
     public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
+        profile.setProfileImage(profileImage);
     }
 
     public String getBio() {
-        return bio;
+        return profile.getBio();
     }
 
     public void setBio(String bio) {
-        this.bio = bio;
+        profile.setBio(bio);
     }
 
     public String getCampus() {
-        return campus;
+        return profile.getCampus();
     }
 
     public void setCampus(String campus) {
-        this.campus = campus;
+        profile.setCampus(campus);
     }
 
     public List<Listing> getListings() {
@@ -107,7 +109,7 @@ public class User {
     }
 
     public void setListings(List<Listing> listings) {
-        this.listings = listings != null ? listings : new ArrayList<>();
+        this.listings = listings != null ? new ArrayList<>(listings) : new ArrayList<>();
     }
 
     public List<Listing> getBookmarks() {
@@ -115,23 +117,27 @@ public class User {
     }
 
     public void setBookmarks(List<Listing> bookmarks) {
-        this.bookmarks = bookmarks != null ? bookmarks : new ArrayList<>();
+        this.bookmarks = bookmarks != null ? new ArrayList<>(bookmarks) : new ArrayList<>();
     }
 
     public List<Review> getReviews() {
-        return reviews;
+        return Collections.unmodifiableList(new ArrayList<>(reviews));
     }
 
     public void setReviews(List<Review> reviews) {
-        this.reviews = reviews != null ? reviews : new ArrayList<>();
+        this.reviews = new ArrayList<>();
+        if (reviews != null) {
+            for (Review review : reviews) {
+                if (review != null) {
+                    this.reviews.add(review);
+                }
+            }
+        }
+        updateUserRating();
     }
 
     public float getUserRating() {
         return userRating;
-    }
-
-    public void setUserRating(float userRating) {
-        this.userRating = userRating;
     }
 
     public LocalDateTime getAccountCreatedDate() {
@@ -140,5 +146,41 @@ public class User {
 
     public void setAccountCreatedDate(LocalDateTime accountCreatedDate) {
         this.accountCreatedDate = accountCreatedDate;
+    }
+
+    public void addListing(Listing listing) {
+        if (listing != null && !listings.contains(listing)) {
+            listings.add(listing);
+        }
+    }
+
+    public void addBookmark(Listing listing) {
+        if (listing != null && !bookmarks.contains(listing)) {
+            bookmarks.add(listing);
+        }
+    }
+
+    public boolean removeBookmark(Listing listing) {
+        return listing != null && bookmarks.remove(listing);
+    }
+
+    public void addReview(Review review) {
+        if (review != null && !reviews.contains(review)) {
+            reviews.add(review);
+            updateUserRating();
+        }
+    }
+
+    private void updateUserRating() {
+        if (reviews.isEmpty()) {
+            userRating = 0.0f;
+            return;
+        }
+
+        float totalStars = 0.0f;
+        for (Review review : reviews) {
+            totalStars += review.getStars();
+        }
+        userRating = totalStars / reviews.size();
     }
 }

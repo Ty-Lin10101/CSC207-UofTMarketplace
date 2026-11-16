@@ -18,13 +18,12 @@ public class Listing {
     private String campus;
     private Status status;
     private User seller;
-    private String mainImage;
-    private List<String> imageGallery;
+    private ListingImages images;
     private LocalDateTime timePosted;
 
     public Listing() {
         this.categories = new ArrayList<>();
-        this.imageGallery = new ArrayList<>();
+        this.images = new ListingImages();
         this.status = Status.Active;
         this.timePosted = LocalDateTime.now();
     }
@@ -39,10 +38,7 @@ public class Listing {
         this.categories = categories != null ? new ArrayList<>(categories) : new ArrayList<>();
         this.campus = campus;
         this.seller = seller;
-        this.mainImage = mainImage;
-        if (mainImage != null && !mainImage.trim().isEmpty()) {
-            this.imageGallery.add(mainImage);
-        }
+        this.images = new ListingImages(mainImage);
     }
 
     public int getId() {
@@ -118,19 +114,27 @@ public class Listing {
     }
 
     public String getMainImage() {
-        return mainImage;
+        return images.getMainImage();
     }
 
     public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
+        images.setMainImage(mainImage);
     }
 
     public List<String> getImageGallery() {
-        return imageGallery;
+        return images.getGallery();
     }
 
     public void setImageGallery(List<String> imageGallery) {
-        this.imageGallery = imageGallery != null ? new ArrayList<>(imageGallery) : new ArrayList<>();
+        images.setGallery(imageGallery);
+    }
+
+    public ListingImages getImages() {
+        return images;
+    }
+
+    public void setImages(ListingImages images) {
+        this.images = images == null ? new ListingImages() : new ListingImages(images);
     }
 
     public LocalDateTime getTimePosted() {
@@ -139,5 +143,9 @@ public class Listing {
 
     public void setTimePosted(LocalDateTime timePosted) {
         this.timePosted = timePosted;
+    }
+
+    public boolean addImage(String image) {
+        return images.addImage(image);
     }
 }
