@@ -25,13 +25,6 @@ public class ListingImages {
     }
 
     public void setMainImage(String mainImage) {
-        if (mainImage == null || mainImage.trim().isEmpty()) {
-            this.mainImage = null;
-            return;
-        }
-        if (!gallery.contains(mainImage) && gallery.size() >= 10) {
-            throw new IllegalArgumentException("A listing cannot have more than 10 images.");
-        }
         if (!gallery.contains(mainImage)) {
             gallery.add(mainImage);
         }
@@ -46,13 +39,6 @@ public class ListingImages {
         List<String> replacement = new ArrayList<>();
         if (gallery != null) {
             for (String image : gallery) {
-                if (image == null || image.trim().isEmpty()) {
-                    throw new IllegalArgumentException("Image paths cannot be empty.");
-                }
-                if (!replacement.contains(image)) {
-                    if (replacement.size() == 10) {
-                        throw new IllegalArgumentException("A listing cannot have more than 10 images.");
-                    }
                     replacement.add(image);
                 }
             }
