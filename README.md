@@ -7,7 +7,7 @@ CSC207 Fall 2026 Group Project
 ### Team Members
 - Owen Zhang
 - Houssam Kadri (GitHub: House-House)
-- Jeffery Chan (GitHub: jycxn)
+- Jeffrey Chan (GitHub: jycxn)
 - Millie Bay (GitHub: millieb-code)
 - Tyler Lin (GitHub: Ty-Lin10101)
 - Tony Lin (GitHub: ToniSucks)
