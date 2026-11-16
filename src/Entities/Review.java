@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 
 public class Review {
+    // Everything is final - Reviews can't be edited
     private final String id;
     private final User reviewer;
     private final User reviewee;
