@@ -77,7 +77,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : PasswordHasher.hash(password);
+        this.password = password;
     }
 
     public String getProfileImage() {
@@ -179,7 +179,7 @@ public class User {
 
         float totalStars = 0.0f;
         for (Review review : reviews) {
-            totalStars += review.getStars();
+            totalStars += review.getStarRating();
         }
         userRating = totalStars / reviews.size();
     }
