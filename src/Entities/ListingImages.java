@@ -44,7 +44,6 @@ public class ListingImages {
                     replacement.add(image);
                 }
             }
-        }
         this.gallery = replacement;
         if (mainImage == null || !this.gallery.contains(mainImage)) {
             mainImage = this.gallery.isEmpty() ? null : this.gallery.get(0);
