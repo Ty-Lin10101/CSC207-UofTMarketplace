@@ -1,3 +1,9 @@
+package interface_adapter.searchListings;
+
+import use_case.searchListings.searchListingInputBoundary;
+import use_case.searchListings.searchListingInputData;
+import use_case.searchListings.searchListingOutputData;
+
 public class searchListingsController {
     private final searchListingInputBoundary searchListingsInteractor;
 

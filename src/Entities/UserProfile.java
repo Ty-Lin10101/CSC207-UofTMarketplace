@@ -1,3 +1,5 @@
+package Entities;
+
 public class UserProfile {
     private String firstName;
     private String lastName;

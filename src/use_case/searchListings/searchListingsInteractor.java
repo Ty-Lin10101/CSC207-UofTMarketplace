@@ -1,4 +1,8 @@
+package use_case.searchListings;
+
 import java.util.ArrayList;
+
+import Entities.Listing;
 
 public class searchListingsInteractor implements searchListingInputBoundary {
     private final searchListingDataAccessInterface listingDataAccess;

@@ -1,3 +1,5 @@
+package use_case.searchListings;
+
 public class searchListingInputData {
     private final String userInput;
 

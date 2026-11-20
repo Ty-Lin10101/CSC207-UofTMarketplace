@@ -1,5 +1,10 @@
+package data_access;
+
 import java.util.ArrayList;
 import javax.sql.DataSource;
+
+import Entities.Listing;
+import use_case.searchListings.searchListingDataAccessInterface;
 
 public class SupabaseMarketplaceDataAccessObject implements searchListingDataAccessInterface {
     public SupabaseMarketplaceDataAccessObject(DataSource dataSource) {
