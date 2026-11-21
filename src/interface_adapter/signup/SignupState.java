@@ -7,7 +7,7 @@ public class SignupState {
     private String email = "";
     private String password = "";
     private String repeatPassword = "";
-    private String campus = "St. George";
+    private String campus = "";
     private String errorMessage = null;
 
     public String getFirstName() { return firstName; }

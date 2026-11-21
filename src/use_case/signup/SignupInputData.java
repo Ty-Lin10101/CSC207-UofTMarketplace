@@ -10,12 +10,13 @@ public class SignupInputData {
     private final String campus;
 
     public SignupInputData(String firstName, String lastName, String username,
-                           String email, String password, String campus) {
+                           String email, String password, String repeatPassword, String campus) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.repeatPassword = repeatPassword;
         this.campus = campus;
     }
 
