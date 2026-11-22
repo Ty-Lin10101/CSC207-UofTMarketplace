@@ -1,6 +1,6 @@
 package use_case.signup;
 
-import entity.User;
+import Entities.User;
 
 public interface SignupUserDataAccessInterface {
     boolean existsByUsername(String username);

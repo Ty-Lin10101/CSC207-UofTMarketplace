@@ -1,6 +1,6 @@
 package use_case.signup;
 
-import entity.User;
+import Entities.User;
 
 public class SignupInteractor implements SignupInputBoundary {
     private final SignupUserDataAccessInterface userDataAccess;
@@ -65,7 +65,7 @@ public class SignupInteractor implements SignupInputBoundary {
         if (!isStrongPassword(password)) {
             signupPresenter.prepareFailView("Password must be at least 8 characters and include a combination of " +
                                             "uppercase and lowercase letters, numbers, and accepted symbols (.!@#$%^&*()-=).");
-                                            // i couldn't figure out how to allow every possible symbol lol so we have this
+                                            // I couldn't figure out how to allow every possible symbol lol so we have this
             return;
         }
 
@@ -74,7 +74,7 @@ public class SignupInteractor implements SignupInputBoundary {
                 inputData.getLastName().trim(),
                 username,
                 email,
-                password,
+                password, "", "",
                 inputData.getCampus().trim()
         );
         userDataAccess.save(newUser);
