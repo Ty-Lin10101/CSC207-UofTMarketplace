@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class ListingImages {
+    public static final int MAX_PHOTOS = 10;
+
     private String mainImage;
     private List<String> gallery;
 
@@ -57,7 +59,7 @@ public class ListingImages {
         if (gallery.contains(image)) {
             return true;
         }
-        if (gallery.size() >= 10) {
+        if (gallery.size() >= MAX_PHOTOS) {
             return false;
         }
         gallery.add(image);

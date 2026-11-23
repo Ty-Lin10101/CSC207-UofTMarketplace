@@ -181,7 +181,7 @@ public class User {
 
         float totalStars = 0.0f;
         for (Review review : reviews) {
-            totalStars += review.getStars();
+            totalStars += review.getStarRating();
         }
         userRating = totalStars / reviews.size();
     }
