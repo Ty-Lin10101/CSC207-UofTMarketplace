@@ -43,8 +43,7 @@ public class ListingImages {
         List<String> replacement = new ArrayList<>();
         if (gallery != null) {
             for (String image : gallery) {
-                    replacement.add(image);
-                }
+                replacement.add(image);
             }
         this.gallery = replacement;
         if (mainImage == null || !this.gallery.contains(mainImage)) {
