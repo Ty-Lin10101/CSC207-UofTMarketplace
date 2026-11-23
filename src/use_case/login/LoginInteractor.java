@@ -29,7 +29,7 @@ public class LoginInteractor implements LoginInputBoundary {
 
         User user = userDataAccess.getByEmail(email);
 
-        if (user == null || !user.getPassword().equals(password)) { // !PasswordHasher.matches(password, user.getPassword())
+        if (user == null || !user.matchesPassword(password)) {
             loginPresenter.prepareFailView("Incorrect email or password");
             return;
         }

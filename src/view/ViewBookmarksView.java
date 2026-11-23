@@ -4,40 +4,40 @@ import interface_adapter.view_bookmarks.ViewBookmarksController;
 import interface_adapter.view_bookmarks.ViewBookmarksViewModel;
 import use_case.view_bookmarks.BookmarkedListingData;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import java.awt.BorderLayout;
-import java.util.List;
+import java.util.function.IntConsumer;
 
 public class ViewBookmarksView extends JPanel {
-    private final JTextArea listingsArea = new JTextArea(10, 30);
-
-    public ViewBookmarksView(ViewBookmarksController controller,
-                             ViewBookmarksViewModel viewModel) {
-        setLayout(new BorderLayout());
-
-        JButton bookmarksButton = new JButton("My bookmarks");
-        listingsArea.setEditable(false);
-
-        add(bookmarksButton, BorderLayout.NORTH);
-        add(new JScrollPane(listingsArea), BorderLayout.CENTER);
-
-        bookmarksButton.addActionListener(event -> controller.execute());
-        viewModel.addPropertyChangeListener(event -> refresh(viewModel));
-        refresh(viewModel);
+    public ViewBookmarksView(ViewBookmarksController controller, ViewBookmarksViewModel model) {
+        this(controller, model, null);
     }
 
-    private void refresh(ViewBookmarksViewModel viewModel) {
-        listingsArea.setText("");
-
-        List<BookmarkedListingData> bookmarks = viewModel.getBookmarks();
-        for (BookmarkedListingData listing : bookmarks) {
-            listingsArea.append(String.format("%s - $%.2f%n",
-                    listing.getName(), listing.getPrice()));
-        }
-
-        listingsArea.append(viewModel.getMessage());
+    public ViewBookmarksView(ViewBookmarksController controller, ViewBookmarksViewModel model, IntConsumer openListing) {
+        super(new BorderLayout());
+        JButton refresh = new JButton("My bookmarks");
+        JPanel rows = new JPanel();
+        rows.setLayout(new BoxLayout(rows, BoxLayout.Y_AXIS));
+        add(refresh, BorderLayout.NORTH);
+        add(new JScrollPane(rows), BorderLayout.CENTER);
+        refresh.addActionListener(event -> controller.execute());
+        Runnable render = () -> {
+            rows.removeAll();
+            for (BookmarkedListingData item : model.getBookmarks()) {
+                String title = String.format("%s — $%.2f", item.getName(), item.getPrice());
+                if (openListing == null) {
+                    rows.add(new JLabel(title));
+                } else {
+                    JButton open = new JButton(title);
+                    open.addActionListener(e -> openListing.accept(item.getListingId()));
+                    rows.add(open);
+                }
+            }
+            rows.add(new JLabel(model.getMessage()));
+            rows.revalidate();
+            rows.repaint();
+        };
+        model.addPropertyChangeListener(event -> render.run());
+        render.run();
     }
 }

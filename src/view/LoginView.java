@@ -75,7 +75,7 @@ public class LoginView extends JPanel implements PropertyChangeListener {
             errorLabel.setText(state.getErrorMessage());
         } else {
             errorLabel.setText(" ");
-            JOptionPane.showMessageDialog(this, "Logged in successfully!");
+            passwordField.setText("");
         }
     }
 }

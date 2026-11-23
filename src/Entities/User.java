@@ -79,7 +79,11 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : PasswordHasher.hash(password);
+    }
+
+    public boolean matchesPassword(String candidate) {
+        return PasswordHasher.matches(candidate, password);
     }
 
     public String getProfileImage() {

@@ -314,7 +314,17 @@ javac -d out $sources
 java -cp out app.Main
 ```
 
-Choose **Create Listing** to try UC5 with a demo seller. Listings and locally copied photos are available for the current session.
+### Run the end-to-end demo
+
+In IntelliJ, run the green arrow next to `main` in `src/app/Main.java`. The marketplace opens in guest mode with a sample textbook. For a two-account walkthrough:
+
+1. Select **Sign up**, create a seller account, and choose **Create Listing**. Fill in the listing, optionally attach a JPG or PNG, and select **Publish** to open its details.
+2. Return to the marketplace and log out. Sign up as a buyer, or log in with the local demo account (`demo@utoronto.ca`, password `CampusDemo1!`).
+3. Search for the seller's item by title or description. Try a price or category filter and select a sort order. Open the result and choose **Seller profile** to see who published it.
+4. From the item's details select **Bookmark**, then **My bookmarks**. Open the saved item, click **Bookmarked** to remove it, and open **My bookmarks** again to see the empty state.
+5. From the marketplace open **My profile**, edit the profile, and save. Log out and back in to the same account to see the changes.
+
+Accounts, listings, and bookmarks are shared across screens and accounts for one app run. Restarting resets the demo. Photo uploads use local temporary storage. This flow runs offline.
 
 ---
 

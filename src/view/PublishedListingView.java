@@ -1,6 +1,7 @@
 package view;
 
 import use_case.create_listing.CreateListingOutputData;
+import interface_adapter.ViewListingDetails.ViewListingDetailsViewModel;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -63,8 +64,22 @@ public final class PublishedListingView extends JPanel {
                 + "\nSeller: " + listing.getSellerName() + "\n\n" + listing.getDescription());
         details.setCaretPosition(0);
 
+        setPhotos(listing.getPhotos());
+    }
+
+    public void setListing(ViewListingDetailsViewModel listing) {
+        title.setText(listing.getTitle());
+        details.setText("Listing #" + listing.getId() + "  |  " + listing.getStatusText() + "  |  "
+                + listing.getPriceText() + "\n" + String.join(", ", listing.getCategories()) + "  |  "
+                + listing.getCondition() + "  |  " + listing.getCampus() + "\nSeller: " + listing.getSellerName()
+                + "  |  Rating: " + listing.getSellerRatingText() + "\n\n" + listing.getDescription());
+        details.setCaretPosition(0);
+        setPhotos(listing.getImageGallery());
+    }
+
+    private void setPhotos(List<String> gallery) {
         photoChoice.removeAllItems();
-        photos = listing.getPhotos();
+        photos = gallery;
         for (int index = 0; index < photos.size(); index++) {
             photoChoice.addItem("Photo " + (index + 1));
         }

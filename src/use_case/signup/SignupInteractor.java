@@ -17,8 +17,13 @@ public class SignupInteractor implements SignupInputBoundary {
     public void execute(SignupInputData inputData) {
         if (inputData.getFirstName().isBlank() || inputData.getLastName().isBlank()
                 || inputData.getUsername().isEmpty() || inputData.getEmail().isEmpty()
-                || inputData.getCampus().isBlank()) {
+                || inputData.getCampus().isBlank() || "Select a campus...".equals(inputData.getCampus())) {
             signupPresenter.prepareFailView("All fields are required.");
+            return;
+        }
+
+        if ((inputData.getFirstName().trim() + " " + inputData.getLastName().trim()).length() > 80) {
+            signupPresenter.prepareFailView("Your profile name must be 80 characters or fewer.");
             return;
         }
 

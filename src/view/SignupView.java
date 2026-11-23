@@ -75,7 +75,9 @@ public class SignupView extends JPanel implements PropertyChangeListener {
 
     private void addRow(String labelText, JComponent field, GridBagConstraints gbc, int row) {
         gbc.gridx = 0; gbc.gridy = row;
-        add(new JLabel(labelText), gbc);
+        JLabel label = new JLabel(labelText);
+        label.setLabelFor(field);
+        add(label, gbc);
         gbc.gridx = 1;
         add(field, gbc);
     }
@@ -97,7 +99,7 @@ public class SignupView extends JPanel implements PropertyChangeListener {
             errorLabel.setText(state.getErrorMessage());
         } else {
             errorLabel.setText(" ");
-            JOptionPane.showMessageDialog(this, "Success! Welcome to UofT Marketplace.");
+            clearFields();
         }
     }
 }
