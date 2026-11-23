@@ -19,4 +19,3 @@ import java.beans.PropertyChangeSupport;
             support.addPropertyChangeListener(listener);
         }
     }
-}
