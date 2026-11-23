@@ -1,0 +1,182 @@
+@startuml UC5_Create_Listing
+' Class names and selected members reflect the local houssam/uc5-create-listing checkout.
+title UC5 Create Listing | UofT Marketplace
+skinparam linetype ortho
+skinparam backgroundColor #17181C
+skinparam defaultFontName Segoe UI
+skinparam defaultFontColor #ECEEF4
+skinparam ArrowColor #A5AFC1
+skinparam ArrowThickness 1.5
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam classBackgroundColor #2B2D33
+skinparam classBorderColor #6A7180
+skinparam classFontColor #ECEEF4
+skinparam classAttributeFontColor #D8DCE7
+skinparam packageBorderColor #757C8C
+skinparam packageFontColor #ECEEF4
+skinparam CircledCharacterFontColor #1A202B
+skinparam classAttributeIconSize 0
+skinparam nodesep 30
+skinparam ranksep 48
+hide empty members
+
+package "Interface Adapters" as Adapters #1C2D27 {
+  class "CreateListingController" as Controller {
+    - interactor : CreateListingInputBoundary
+    + execute(...)
+  }
+
+  class "CreateListingPresenter" as Presenter {
+    + prepareSuccessView(data : CreateListingOutputData)
+    + prepareFailView(errorMessage : String)
+  }
+
+  class "CreateListingViewModel" as ViewModel {
+    + addListener(listener : PropertyChangeListener)
+    ~ showError(message : String)
+    ~ showPublishedListing(listing : CreateListingOutputData)
+  }
+
+}
+
+package "Application Business Rules" as UseCases #30242B {
+  class "CreateListingInputData" as Request {
+    - title : String
+    - description : String
+    - price : String
+    - category : String
+    - condition : String
+    - campus : String
+    - imagePaths : List<String>
+  }
+
+  interface "CreateListingInputBoundary" as Input {
+    + execute(inputData : CreateListingInputData)
+  }
+
+  interface "CreateListingOutputBoundary" as Output {
+    + prepareSuccessView(outputData : CreateListingOutputData)
+    + prepareFailView(errorMessage : String)
+  }
+
+  class "CreateListingOutputData" as Result {
+    - listingId : int
+    - status : String
+    - photos : List<String>
+    + getTitle() : String
+    + getPrice() : double
+  }
+
+  class "CreateListingInteractor" as Interactor #3A2B35 {
+    - dataAccess : CreateListingDataAccessInterface
+    - imageUploader : ImageUploadGateway
+    - presenter : CreateListingOutputBoundary
+    + execute(inputData : CreateListingInputData)
+  }
+
+  interface "CreateListingDataAccessInterface" as ListingPort {
+    + getCurrentUser() : Optional<User>
+    + saveListing(listing : Listing)
+  }
+
+  interface "ImageUploadGateway" as PhotoPort {
+    + uploadImages(imagePaths : List<String>) : List<String>
+    + discardImages(imageLocations : List<String>)
+  }
+
+}
+
+package "Enterprise Business Rules" as Domain #2C2B22 {
+  class Listing {
+    - id : int
+    - status : Status
+    - seller : User
+    + getImageGallery() : List<String>
+  }
+
+  class "ListingBuilder" as Builder {
+    + build() : Listing
+  }
+
+  class "ListingImages" as Images {
+    {static} + MAX_PHOTOS : int
+    + getGallery() : List<String>
+  }
+
+  class User {
+    + addListing(listing : Listing)
+    + getListings() : List<Listing>
+  }
+
+}
+
+package "Frameworks & Drivers" as Frameworks #202A39 {
+  class "CreateListingView" as Form {
+    - publishListing()
+    - choosePhotos()
+  }
+
+  class "PublishedListingView" as Details {
+    + setListing(listing : CreateListingOutputData)
+  }
+
+  class "app.Main" as Main {
+    {static} + main(args : String[])
+  }
+
+  class "InMemoryMarketplaceDataAccessObject" as Memory {
+    - listings : Map<Integer, Listing>
+    + findListing(listingId : int) : Optional<Listing>
+  }
+
+  class "LocalImageUploadGateway" as LocalPhotos {
+    - directory : Path
+    + uploadImages(imagePaths : List<String>) : List<String>
+  }
+
+}
+
+' Align the three inner sections across the top and the drivers below them.
+Controller -[hidden]right-> Request
+Request -[hidden]right-> Interactor
+Interactor -[hidden]right-> Builder
+Controller -[hidden]down-> Presenter
+Presenter -[hidden]down-> ViewModel
+Request -[hidden]down-> Input
+Input -[hidden]down-> Output
+Output -[hidden]down-> Result
+Result -[hidden]down-> ListingPort
+ListingPort -[hidden]right-> PhotoPort
+Builder -[hidden]down-> Listing
+Listing -[hidden]down-> Images
+Images -[hidden]right-> User
+ListingPort -[hidden]down-> Memory
+Form -[hidden]right-> Details
+Details -[hidden]right-> Main
+Main -[hidden]right-> Memory
+Memory -[hidden]right-> LocalPhotos
+
+Controller -[norank]-> Input
+Controller -[norank]-> Request
+Presenter .[norank].|> Output
+Presenter -[norank]-> Result
+Presenter -[norank]-> ViewModel
+Interactor .[norank].|> Input
+Interactor -[norank]-> Request
+Interactor -[norank]-> Output
+Interactor -[norank]-> Result
+Interactor -[norank]-> ListingPort
+Interactor -[norank]-> PhotoPort
+Interactor -[norank]-> Builder
+Builder -[norank]-> Listing
+Listing -[norank]-> Images
+Listing -[norank]-> User
+Form -[norank]-> Controller
+Form -[norank]-> ViewModel
+Details -[norank]-> Result
+Memory .[norank].|> ListingPort
+LocalPhotos .[norank].|> PhotoPort
+
+caption app.Main connects the components. Listings live in memory, and photos use local temporary storage.
+@enduml
