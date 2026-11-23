@@ -306,19 +306,15 @@ TODO: add one PlantUML sequence diagram per MVP use case.
 ---
 
 ## How to Run
-
-Tony's UC3/UC4 public profile implementation has a runnable Swing demo (JDK 11+):
+Run `app.Main` with JDK 11 or newer. From the repository root in PowerShell:
 
 ```powershell
-./profile.ps1 test
-./profile.ps1 run
+$sources = (Get-ChildItem src -Recurse -Filter '*.java' -File).FullName
+javac -d out $sources
+java -cp out app.Main
 ```
 
-It supports public profile viewing, active listings and ratings, profile edit prefill,
-validation, save/cancel, local picture selection and owner-only edits. The demo uses
-in-memory data and a seeded session; login/database/image hosting integration remains
-dependent on the team's shared backend. See [profile implementation and integration notes](docs/tony-profile.md)
-for architecture, sequence diagrams, tests, limitations and team wiring instructions.
+Choose **Create Listing** to try UC5 with a demo seller. Listings and locally copied photos are available for the current session.
 
 ---
 

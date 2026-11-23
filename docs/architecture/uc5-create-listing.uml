@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>use_case.create_listing.CreateListingInteractor</OriginalElement>
+  <nodes>
+    <node x="852.8805251738613" y="1263.4006946646596">app.Main</node>
+    <node x="1080.4740078956384" y="931.2440215046995">use_case.create_listing.CreateListingDataAccessInterface</node>
+    <node x="60.6675493873438" y="433.9326645680502">interface_adapter.create_listing.CreateListingPresenter</node>
+    <node x="611.1883778461697" y="269.43424434901465">use_case.create_listing.CreateListingInputBoundary</node>
+    <node x="72.04808715218567" y="245.1846030193575">interface_adapter.create_listing.CreateListingController</node>
+    <node x="0.10593857705373466" y="1265.0638180679307">view.CreateListingView</node>
+    <node x="487.38830289156795" y="1288.1133830958966">view.PublishedListingView</node>
+    <node x="1920.077641633112" y="988.0178738595278">Entities.ListingBuilder</node>
+    <node x="1112.6596059948893" y="1283.1106857563311">data_access.InMemoryMarketplaceDataAccessObject</node>
+    <node x="606.131777501997" y="459.56607790997964">use_case.create_listing.CreateListingOutputBoundary</node>
+    <node x="611.3379309396942" y="0.9428565417429979">use_case.create_listing.CreateListingInputData</node>
+    <node x="1544.389570389325" y="961.9092464089559">use_case.create_listing.ImageUploadGateway</node>
+    <node x="2289.185096850055" y="886.1238380832636">Entities.ListingImages</node>
+    <node x="1068.4909901431695" y="268.56602098829717">use_case.create_listing.CreateListingInteractor</node>
+    <node x="2261.172216658819" y="17.15303960207285">Entities.User</node>
+    <node x="51.13612352823483" y="673.6344024005433">interface_adapter.create_listing.CreateListingViewModel</node>
+    <node x="596.3545629948957" y="624.9233691118194">use_case.create_listing.CreateListingOutputData</node>
+    <node x="1536.9945861951885" y="1319.7214765523433">data_access.LocalImageUploadGateway</node>
+    <node x="1911.0507888461982" y="240.43168258883134">Entities.Listing</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="use_case.create_listing.CreateListingInteractor" target="use_case.create_listing.CreateListingDataAccessInterface" relationship="TO_ONE">
+      <point x="60.0" y="67.5" />
+      <point x="38.51698224753113" y="-43.5" />
+    </edge>
+    <edge source="app.Main" target="use_case.create_listing.CreateListingInteractor" relationship="CREATE">
+      <point x="15.0" y="-43.5" />
+      <point x="967.3805251738613" y="839.4233691118194" />
+      <point x="1261.4909901431695" y="839.4233691118194" />
+      <point x="45.0" y="67.5" />
+    </edge>
+    <edge source="data_access.InMemoryMarketplaceDataAccessObject" target="Entities.Listing" relationship="TO_MANY">
+      <point x="3.9400511082021694E-4" y="55.50031424366898" />
+      <point x="1294.66" y="1489.564" />
+      <point x="2296.685" y="1489.564" />
+      <point x="2296.685" y="1135.0" />
+      <point x="2259.0" y="1135.0" />
+      <point x="2259.0" y="919.932" />
+      <point x="136.50021115380173" y="336.0003174111687" />
+    </edge>
+    <edge source="Entities.ListingBuilder" target="Entities.ListingImages" relationship="TO_ONE">
+      <point x="154.0003583668879" y="1.261404722754378E-4" />
+      <point x="2534.685" y="1175.518" />
+      <point x="2534.685" y="841.653" />
+      <point x="2229.0" y="841.653" />
+      <point x="2229.0" y="960.5" />
+      <point x="-114.00009685005489" y="-5.123838083263649" />
+    </edge>
+    <edge source="app.Main" target="data_access.InMemoryMarketplaceDataAccessObject" relationship="CREATE">
+      <point x="99.5" y="31.709991091671554" />
+      <point x="-182.0" y="0.0" />
+    </edge>
+    <edge source="use_case.create_listing.CreateListingInteractor" target="use_case.create_listing.CreateListingOutputData" relationship="CREATE">
+      <point x="15.0" y="67.5" />
+      <point x="1231.4909901431695" y="764.4233691118194" />
+      <point x="121.5" y="0.0" />
+    </edge>
+    <edge source="Entities.Listing" target="Entities.ListingImages" relationship="CREATE">
+      <point x="-136.49978884619827" y="3.1741116868033714E-4" />
+      <point x="469.888" y="583.932" />
+      <point x="469.888" y="1504.564" />
+      <point x="2398.5" y="1504.564" />
+      <point x="2398.5" y="1093.0" />
+      <point x="2403.185" y="1093.0" />
+      <point x="-9.685005488790921E-5" y="79.50016191673637" />
+    </edge>
+    <edge source="use_case.create_listing.CreateListingInteractor" target="use_case.create_listing.ImageUploadGateway" relationship="TO_ONE">
+      <point x="148.0" y="0.0" />
+      <point x="1695.389570389325" y="336.06602098829717" />
+      <point x="0.0" y="-43.5" />
+    </edge>
+    <edge source="data_access.InMemoryMarketplaceDataAccessObject" target="Entities.User" relationship="TO_ONE">
+      <point x="182.00039400511082" y="-36.38968575633112" />
+      <point x="1902.578" y="1302.221" />
+      <point x="1902.578" y="958.0" />
+      <point x="2201.551" y="958.0" />
+      <point x="2201.551" y="420.653" />
+      <point x="-165.00021665881877" y="-3.9602072831712576E-5" />
+    </edge>
+    <edge source="Entities.ListingBuilder" target="Entities.User" relationship="TO_ONE">
+      <point x="3.5836688789459004E-4" y="-187.49987385952772" />
+      <point x="2074.078" y="958.0" />
+      <point x="2201.551" y="958.0" />
+      <point x="2201.551" y="420.653" />
+      <point x="-165.00021665881877" y="-3.9602072831712576E-5" />
+    </edge>
+    <edge source="app.Main" target="interface_adapter.create_listing.CreateListingController" relationship="CREATE">
+      <point x="-30.0" y="-43.5" />
+      <point x="922.3805251738613" y="1201.4092464089558" />
+      <point x="-17.394061422946265" y="1201.4092464089558" />
+      <point x="-17.394061422946265" y="261.6846030193575" />
+      <point x="-211.5" y="-15.0" />
+    </edge>
+    <edge source="view.CreateListingView" target="interface_adapter.create_listing.CreateListingController" relationship="TO_ONE">
+      <point x="-179.9698150488189" y="-103.5" />
+      <point x="33.63612352823483" y="276.6846030193575" />
+      <point x="-211.5" y="0.0" />
+    </edge>
+    <edge source="Entities.ListingBuilder" target="Entities.Listing" relationship="CREATE">
+      <point x="-41.52664163311215" y="-187.5" />
+      <point x="-14.999788846198271" y="343.5" />
+    </edge>
+    <edge source="app.Main" target="interface_adapter.create_listing.CreateListingPresenter" relationship="CREATE">
+      <point x="0.0" y="-43.5" />
+      <point x="952.3805251738613" y="564.0660779099796" />
+      <point x="255.63612352823483" y="564.0660779099796" />
+      <point x="7.468574140891036" y="43.5" />
+    </edge>
+    <edge source="app.Main" target="data_access.LocalImageUploadGateway" relationship="CREATE">
+      <point x="15.0" y="43.5" />
+      <point x="967.3805251738613" y="1416.6133830958966" />
+      <point x="-151.0" y="41.391906543553205" />
+    </edge>
+    <edge source="interface_adapter.create_listing.CreateListingController" target="use_case.create_listing.CreateListingInputData" relationship="CREATE">
+      <point x="0.0" y="-31.5" />
+      <point x="283.54808715218564" y="104.442856541743" />
+      <point x="-116.0" y="0.0" />
+    </edge>
+    <edge source="interface_adapter.create_listing.CreateListingPresenter" target="interface_adapter.create_listing.CreateListingViewModel" relationship="TO_ONE">
+      <point x="-7.531425859108964" y="43.5" />
+      <point x="0.0" y="-55.5" />
+    </edge>
+    <edge source="data_access.LocalImageUploadGateway" target="use_case.create_listing.ImageUploadGateway" relationship="REALIZATION">
+      <point x="7.394984194136441" y="-55.5" />
+      <point x="0.0" y="43.499999999999886" />
+    </edge>
+    <edge source="app.Main" target="interface_adapter.create_listing.CreateListingViewModel" relationship="CREATE">
+      <point x="-15.0" y="-43.5" />
+      <point x="937.3805251738613" y="1156.4092464089558" />
+      <point x="240.63612352823483" y="1156.4092464089558" />
+      <point x="0.0" y="55.5" />
+    </edge>
+    <edge source="use_case.create_listing.CreateListingInteractor" target="use_case.create_listing.CreateListingOutputBoundary" relationship="TO_ONE">
+      <point x="0.0" y="67.5" />
+      <point x="1216.4909901431695" y="503.06607790997964" />
+      <point x="187.5" y="0.0" />
+    </edge>
+    <edge source="interface_adapter.create_listing.CreateListingPresenter" target="use_case.create_listing.CreateListingOutputBoundary" relationship="REALIZATION">
+      <point x="187.5" y="25.63341334192944" />
+      <point x="-187.5" y="0.0" />
+    </edge>
+    <edge source="app.Main" target="view.CreateListingView" relationship="CREATE">
+      <point x="0.0" y="43.5" />
+      <point x="952.3805251738613" y="1416.6133830958966" />
+      <point x="213.5" y="48.049565027965855" />
+    </edge>
+    <edge source="use_case.create_listing.CreateListingInteractor" target="use_case.create_listing.CreateListingInputBoundary" relationship="REALIZATION">
+      <point x="-148.0" y="-35.13177663928252" />
+      <point x="141.0" y="0.0" />
+    </edge>
+    <edge source="Entities.User" target="Entities.Listing" relationship="TO_MANY">
+      <point x="-2.1665881877197535E-4" y="403.49996039792717" />
+      <point x="2426.172" y="868.624" />
+      <point x="2259.0" y="868.624" />
+      <point x="2259.0" y="919.932" />
+      <point x="136.50021115380173" y="336.0003174111687" />
+    </edge>
+    <edge source="interface_adapter.create_listing.CreateListingController" target="use_case.create_listing.CreateListingInputBoundary" relationship="TO_ONE">
+      <point x="211.49999999999997" y="24.0" />
+      <point x="-141.0" y="-0.2496413296571518" />
+    </edge>
+    <edge source="data_access.InMemoryMarketplaceDataAccessObject" target="use_case.create_listing.CreateListingDataAccessInterface" relationship="REALIZATION">
+      <point x="-56.68559809925091" y="-55.5" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="use_case.create_listing.CreateListingInteractor" target="Entities.ListingBuilder" relationship="CREATE">
+      <point x="148.0" y="-15.0" />
+      <point x="1878.889570389325" y="321.06602098829717" />
+      <point x="1878.889570389325" y="1175.5178738595278" />
+      <point x="-154.0" y="0.0" />
+    </edge>
+    <edge source="Entities.Listing" target="Entities.User" relationship="TO_ONE">
+      <point x="2.1115380172886944E-4" y="343.5003174111687" />
+      <point x="2047.551" y="958.0" />
+      <point x="2201.551" y="958.0" />
+      <point x="2201.551" y="420.653" />
+      <point x="-165.00021665881877" y="-3.9602072831712576E-5" />
+    </edge>
+    <edge source="Entities.Listing" target="Entities.ListingImages" relationship="TO_ONE">
+      <point x="136.50021115380173" y="-178.27868258883132" />
+      <point x="2229.0" y="405.653" />
+      <point x="2229.0" y="960.5" />
+      <point x="-114.00009685005489" y="-5.123838083263649" />
+    </edge>
+    <edge source="Entities.ListingBuilder" target="Entities.ListingImages" relationship="CREATE">
+      <point x="154.0003583668879" y="-14.999873859527725" />
+      <point x="2398.5" y="1160.518" />
+      <point x="2398.5" y="1093.0" />
+      <point x="2403.185" y="1093.0" />
+      <point x="-9.685005488790921E-5" y="79.50016191673637" />
+    </edge>
+    <edge source="app.Main" target="view.PublishedListingView" relationship="CREATE">
+      <point x="-99.5" y="0.0" />
+      <point x="152.0" y="-36.712688431236984" />
+    </edge>
+  </edges>
+  <RemovedNodes />
+  <RemovedEdges />
+  <settings layout="Hierarchic Compact" zoom="0.7695817490494297" showDependencies="true" x="1297.0" y="762.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
